@@ -1,4 +1,4 @@
-export default function CarCard({ image, category, title, year, mileage, price, badge = '' }) {
+export default function CarCard({ image, category, title, year, mileage, price, badge = '', onViewDetails }) {
   // Determine badge styling and text
   let badgeEl = null;
   if (badge === 'new') {
@@ -54,7 +54,10 @@ export default function CarCard({ image, category, title, year, mileage, price, 
           </span>
           <a
             href="#"
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => {
+              e.preventDefault();
+              if (onViewDetails) onViewDetails();
+            }}
             className="text-sm font-display font-semibold underline decoration-sage underline-offset-4 hover:text-ocean"
           >
             View Details
